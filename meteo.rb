@@ -3,9 +3,12 @@ require "dht-sensor-ffi"
 require 'pi_piper'
 include PiPiper
 
-led = PiPiper::Pin.new(pin: 26, direction: :out)
+class Meteo
+  def initialize
+    on_led = PiPiper::Pin.new(pin: 26, direction: :out)
+    sensor = DhtSensor.read(21, 11)
+  end
 
-led.on
-val = DhtSensor.read(21, 11) # pin=21, sensor type=DHT-11
-puts val.temp               # => 21.899999618530273 (temp in C)
-puts val.humidity           # => 22.700000762939453 (relative humidity %)
+  puts sensor.temp               # => 21.899999618530273 (temp in C)
+  puts sensor.humidity           # => 22.700000762939453 (relative humidity %)
+end
