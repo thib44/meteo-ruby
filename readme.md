@@ -3,7 +3,7 @@ Ruby Meteo Station
 To play with raspberry PI.
 
 Need :
-- rvm ttps://rvm.io/
+- rvm https://rvm.io/
 - bcm2835 lib : http://www.airspayce.com/mikem/bcm2835/
 
 First install bundle
