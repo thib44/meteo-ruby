@@ -1,0 +1,20 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    dht-sensor-ffi (0.2.0)
+      ffi (~> 1.9)
+    eventmachine (1.0.9)
+    ffi (1.9.18)
+    pi_piper (2.0.0)
+      eventmachine (= 1.0.9)
+      ffi
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  dht-sensor-ffi
+  pi_piper
+
+BUNDLED WITH
+   1.15.3
