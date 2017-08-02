@@ -1,7 +1,7 @@
 require 'rubygems'
 require "dht-sensor-ffi"
 require 'pi_piper'
-require 'byebug'
+#require 'byebug'
 include PiPiper
 
 class Meteo
@@ -10,6 +10,7 @@ class Meteo
     @white_led = PiPiper::Pin.new(pin: 5, direction: :out)
     @yellow_led =  PiPiper::Pin.new(pin: 6, direction: :out)
     @red_led = PiPiper::Pin.new(pin: 13, direction: :out)
+    puts 'on'
     light(@on_led)
     get_meteo
   end
