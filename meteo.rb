@@ -19,16 +19,17 @@ class Meteo
   def get_meteo
     while true do
       @sensor = DhtSensor.read(21, 11)
+      temp_pres = get_temp_pres
       temp = @sensor.temp
       humidity = @sensor.humidity
-      print_meteo(temp, humidity)
+      print_meteo(temp, humidity, temp_pres)
       wich_led_to_light(temp)
       sleep(5)
    end
   end
 
-  def print_meteo(temp, humidity)
-    puts "Temperature = #{temp}°c; Humidité = #{humidity}%"
+  def print_meteo(temp, humidity, temp_pres)
+    puts "Temperature = #{temp}°c; Humidité = #{humidity}%, other captor: temp: #{temp_pres.temp / 10.0}, pres: #{temp_pres.pressure}"
   end
 
   def wich_led_to_light(temp)
@@ -54,6 +55,11 @@ class Meteo
 
   def all_led
     [@white_led, @yellow_led, @red_led]
+  end
+
+  def get_temp_pres
+    temp_pres = TemperaturePressureSensor.new("/dev/i2c-1")
+    tempPres.read(3) # highest accuracy
   end
 end
 
