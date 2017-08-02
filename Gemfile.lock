@@ -6,6 +6,7 @@ GEM
       ffi (~> 1.9)
     eventmachine (1.0.9)
     ffi (1.9.18)
+    i2c (0.4.0)
     pi_piper (2.0.0)
       eventmachine (= 1.0.9)
       ffi
@@ -16,6 +17,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   dht-sensor-ffi
+  i2c (~> 0.4.0)
   pi_piper
 
 BUNDLED WITH

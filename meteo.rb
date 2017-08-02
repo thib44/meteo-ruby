@@ -1,6 +1,7 @@
 require 'rubygems'
 require "dht-sensor-ffi"
 require 'pi_piper'
+require './temperature_pressure_sensor.rb'
 #require 'byebug'
 include PiPiper
 
