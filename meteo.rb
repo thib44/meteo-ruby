@@ -59,7 +59,7 @@ class Meteo
 
   def get_temp_pres
     temp_pres = TemperaturePressureSensor.new("/dev/i2c-1")
-    tempPres.read(3) # highest accuracy
+    temp_pres.read(3) # highest accuracy
   end
 end
 
