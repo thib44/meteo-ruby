@@ -14,12 +14,6 @@ class Meteo
   URL = 'https://finot-meteo.herokuapp.com/meteos'
 
   def initialize
-    @on_led = PiPiper::Pin.new(pin: 26, direction: :out)
-    @white_led = PiPiper::Pin.new(pin: 5, direction: :out)
-    @yellow_led =  PiPiper::Pin.new(pin: 6, direction: :out)
-    @red_led = PiPiper::Pin.new(pin: 13, direction: :out)
-    puts 'on'
-    light(@on_led)
     get_meteo
   end
 
@@ -29,7 +23,6 @@ class Meteo
       temp = @sensor.temp
       humidity = @sensor.humidity
       print_meteo(temp, humidity, temp_pres)
-   #   wich_led_to_light(temp)
       send_meteo(temp_pres, humidity)
   end
 
