@@ -1,9 +1,10 @@
+
 require 'rubygems'
 require "dht-sensor-ffi"
-require 'pi_piper'
-require './temperature_pressure_sensor.rb'
+ require 'pi_piper'
+require_relative 'lib/temperature_pressure_sensor.rb'
 #require 'byebug'
-include PiPiper
+ include PiPiper
 
 require 'net/http'
 require 'json'
@@ -28,7 +29,7 @@ class Meteo
       temp = @sensor.temp
       humidity = @sensor.humidity
       print_meteo(temp, humidity, temp_pres)
-      wich_led_to_light(temp)
+   #   wich_led_to_light(temp)
       send_meteo(temp_pres, humidity)
   end
 
@@ -53,30 +54,30 @@ class Meteo
     puts "Temperature = #{temp}°c; Humidité = #{humidity}%, other captor: temp: #{temp_pres.temp / 10.0}, pres: #{temp_pres.pressure}"
   end
 
-  def wich_led_to_light(temp)
-    stop_all_led
-    case
-      when temp <= 15 then @white_led.on
-      when temp.between?(16,25) then @yellow_led.on
-      when temp > 25 then @red_led.on
-    end
-  end
+ # def wich_led_to_light(temp)
+ #   stop_all_led
+  #  case
+   #   when temp <= 15 then @white_led.on
+    #  when temp.between?(16,25) then @yellow_led.on
+     # when temp > 25 then @red_led.on
+    #end
+  #end
 
   def light(led)
     led.on
   end
 
-  def light_all_led
-    all_led.each { |led| led.on }
-  end
+  #def light_all_led
+   # all_led.each { |led| led.on }
+  #end
 
-  def stop_all_led
-    all_led.each { |led| led.off }
-  end
+  #def stop_all_led
+   # all_led.each { |led| led.off }
+ # end
 
-  def all_led
-    [@white_led, @yellow_led, @red_led]
-  end
+  #def all_led
+   # [@white_led, @yellow_led, @red_led]
+ # end
 
   def get_temp_pres
     temp_pres = TemperaturePressureSensor.new("/dev/i2c-1")
@@ -85,5 +86,3 @@ class Meteo
 end
 
 meteo = Meteo.new()
-
-meteo.wich_led_to_light(60)
