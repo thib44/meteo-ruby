@@ -33,16 +33,6 @@ class Meteo
   def send_meteo(temp_pres, humidity)
     uri = URI(URL)
     http = Net::HTTP.new(uri.host, uri.port)
-    # http.use_ssl = true
-    req = Net::HTTP::Post.new(uri.path, 'Content-Type' => 'application/json')
-    req.body = { temperature: temp_pres.temp, pressure: temp_pres.pressure, humidity: humidity }.to_json
-    puts req.body
-    res = http.request(req)
-  end
-
-  def send_meteo(temp_pres, humidity)
-    uri = URI(URL)
-    http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     req = Net::HTTP::Post.new(uri.path, 'Content-Type' => 'application/json')
     req.body = { temperature: temp_pres.temp, pressure: temp_pres.pressure, humidity: humidity }.to_json
